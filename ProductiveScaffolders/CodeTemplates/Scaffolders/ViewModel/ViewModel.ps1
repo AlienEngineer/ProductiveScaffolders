@@ -22,7 +22,7 @@ try
 		Exit
 	}
 
-	$Members = $class.Members | foreach { 
+	$Members = $class.Members | where { $_.Kind -eq 4 } | foreach { 
 		return @{
 			Name = $_.Name;
 			Type = $_.Type.AsString;

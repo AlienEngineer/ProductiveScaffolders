@@ -1,0 +1,27 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+public ActionResult <#= Model.Name #>(T1 model) 
+{
+	if (ModelState.IsValid)
+    {
+<#
+	if (Model.HandleExceptions) 
+	{
+		this.WriteLine("		try");
+		this.WriteLine("		{");
+	}
+#>
+			_<#= Model.Service.ToLower() #>.<#= Model.Name #>(model.Map<T1, T2>());            
+<#
+	if (Model.HandleExceptions) 
+	{
+		this.WriteLine("		}");
+		this.WriteLine("		catch(" + Model.ExceptionType + " ex)");
+		this.WriteLine("		{");
+		this.WriteLine("			ModelState.AddModelError(\"\", ex);");
+		this.WriteLine("		}");
+	}
+#>
+    }
+	
+	return View(model);
+}

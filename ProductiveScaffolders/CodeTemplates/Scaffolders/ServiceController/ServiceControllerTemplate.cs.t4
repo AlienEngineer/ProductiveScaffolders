@@ -10,6 +10,11 @@ namespace <#= Model.Namespace #>
 { 
     public class <#= Model.Name #>Controller : Controller
     {
-		
+		private readonly <#= Model.Type #> _<#= Model.Name.ToLower() #>;
+
+		public <#= Model.Name #>Controller(<#= Model.Type #> <#= Model.Name.ToLower() #>) 
+		{
+			_<#= Model.Name.ToLower() #> = <#= Model.Name.ToLower() #>;
+		}
 	}
 }
