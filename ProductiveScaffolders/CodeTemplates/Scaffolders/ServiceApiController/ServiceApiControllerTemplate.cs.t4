@@ -2,13 +2,14 @@
 <#@ Output Extension="cs" #>
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Http;
 
 namespace <#= Model.Namespace #>
 { 
-    public class ExampleOutput
+    public class <#= Model.Name #>Controller : ApiController
     {
-		// Example model value from scaffolder script: <#= Model.ExampleValue #>
+		
 	}
 }

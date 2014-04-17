@@ -9,7 +9,7 @@ param(
 	[string]$ToFolder = "Controllers"
 )
 
-$namespace = (Get-Project $Project).Properties.Item("DefaultNamespace").Value
+$namespace = (Get-Project $Project).Properties.Item("DefaultNamespace").Value + "." + $ToFolder
 
 try
 {
