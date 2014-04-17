@@ -22,10 +22,23 @@ try
 		Exit
 	}
 
+	$Members = $class.Members | foreach { 
+		return @{
+			Name = $_.Name;
+			Type = $_.Type.AsString;
+		}
+	}
+
+
+
+	
+
 	Add-ProjectItemViaTemplate $outputPath -Template ViewModelTemplate `
 		-Model @{ 
 			Namespace = $namespace; 
+			Type = $type;
 			Name = $Name;
+			Members = $Members;
 		} `
 		-SuccessMessage "Added ViewModel output at {0}" `
 		-TemplateFolders $TemplateFolders -Project $Project -CodeLanguage $CodeLanguage -Force:$Force

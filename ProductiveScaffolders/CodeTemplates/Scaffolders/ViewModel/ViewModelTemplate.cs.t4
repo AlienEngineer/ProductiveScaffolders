@@ -2,13 +2,19 @@
 <#@ Output Extension="cs" #>
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace <#= Model.Namespace #>
 { 
+	/// <summary>
+    /// Model created based on <#= Model.Type #>
+    /// </summary>
     public class <#= Model.Name #>Model
     {
-		
+<# 
+		foreach(var member in Model.Members)
+		{
+			this.WriteLine("		public {0} {1} {{ get; set; }}", member.Type, member.Name);
+		}
+#>
 	}
 }
