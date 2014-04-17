@@ -5,7 +5,7 @@ param(
 	[string]$CodeLanguage,
 	[string[]]$TemplateFolders,
 	[switch]$Force = $false,
-	[System.Management.Automation.SwitchParameter]$HandleExceptions = $true,
+	[System.Management.Automation.SwitchParameter]$HandleExceptions = $false,
 	[string]$Name = "-",
 	[string]$ExceptionType = "Exception",
 	[string]$ToFolder = "Controllers"
@@ -63,8 +63,8 @@ try
 			Parameters = $_.Parameters | foreach {
 				return @{
 					Type = $_.Type.AsString;
-					TypeName = (Get-Namespace $_.Type.AsString);
-					Namespace = (Exclude-Namespace $_.Type.AsString);
+					TypeName = (Exclude-Namespace $_.Type.AsString);
+					Namespace = (Get-Namespace $_.Type.AsString);
 				}
 			};
 		}

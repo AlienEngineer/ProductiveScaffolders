@@ -15,6 +15,22 @@ namespace ProductiveScaffolders.Controllers
             _service = service;
         }
 
+        public ActionResult ProcessSalary(Employee model) 
+        {
+        	if (ModelState.IsValid)
+            {
+        		try 
+        		{
+        			_service.ProcessSalary(model.Map<T1, T2>());
+        		}
+        		catch (Exception ex)
+        		{
+        			ModelState.AddModelError("", ex);
+        		}
+            }
+        	
+        	return View(model);
+        }
 
     }
 }
