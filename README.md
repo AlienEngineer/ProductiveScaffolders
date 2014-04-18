@@ -11,8 +11,8 @@ To create a view model based on a POCO:
 
 To create a Controller based on a Service:  
 ```
-    Scaffold ServiceController <ServiceType> [Name]
-    Scaffold ServiceApiController <ServiceType> [Name]
+    Scaffold ServiceController <ServiceType> [Name] [-HandleExceptions]
+    Scaffold ServiceApiController <ServiceType> [Name] [-HandleExceptions]
 ```
 
 Small example:
@@ -27,7 +27,7 @@ this:
 
 After this:
 ```
-    Scaffold ServiceControler IService
+    Scaffold ServiceControler IService -HandleExceptions
 ```
 
 Creates this:
