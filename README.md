@@ -14,3 +14,49 @@ To create a Controller based on a Service:
     Scaffold ServiceController <ServiceType> [Name]
     Scaffold ServiceApiController <ServiceType> [Name]
 ```
+
+Small example:
+
+this:
+```C#
+    public interface IService
+    {
+        void ProcessSalary(Employee employee);
+    }
+```
+
+After this:
+```
+    Scaffold ServiceControler IService
+```
+
+Creates this:
+```C#
+    public class ServiceController : Controller
+    {
+        private readonly IService _service;
+
+        public ServiceController(IService service)
+        {
+            _service = service;
+        }
+
+        public ActionResult ProcessSalary(EmployeeModel model) 
+        {
+        	if (ModelState.IsValid)
+            {
+        		try 
+        		{
+        			_service.ProcessSalary(model.Map<T1, T2>());
+        		}
+        		catch (Exception ex)
+        		{
+        			ModelState.AddModelError("", ex);
+        		}
+            }
+        	
+        	return View(model);
+        }
+
+    } 
+```
